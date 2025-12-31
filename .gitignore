@@ -19,3 +19,4 @@ Thumbs.db
 
 # Data (não versionar dados brutos)
 data/
+*.bkp
