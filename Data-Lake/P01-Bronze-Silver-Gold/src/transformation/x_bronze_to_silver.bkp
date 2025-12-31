@@ -1,0 +1,127 @@
+import pandas as pd
+import os
+import sys
+from pathlib import Path
+
+# -------------------------------------------------------------------
+# Helpers
+# -------------------------------------------------------------------
+# ensure `src/` is on sys.path so we can import utils when the script
+# is executed directly from the repository root
+SRC_DIR = Path(__file__).resolve().parents[1]
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
+from utils.io_helpers import read_csv_flexible
+
+BRONZE_DIR = Path("data/bronze")
+SILVER_DIR = Path("data/silver")
+
+#---------------------------------------------------------------------
+
+def ensure_dirs() -> None:
+    SILVER_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def to_snake_case(col: str) -> str:
+    """
+    Simple snake_case normalizer for column names.
+    Ex.: 'Data do Acidente' -> 'data_do_acidente'
+    """
+    col = col.strip()
+    col = col.lower()
+    col = col.replace(" ", "_")
+    col = col.replace("-", "_")
+    col = col.replace("/", "_")
+    col = col.replace("__", "_")
+    return col
+
+
+def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    df.columns = [to_snake_case(c) for c in df.columns]
+    return df
+
+
+def basic_cleaning(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Example cleaning:
+    - drop rows that are completely empty
+    (here we keep it simple – you can extend as needed).
+    """
+    df = df.copy()
+    df = df.dropna(how="all")
+    return df
+
+
+def convert_types(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Example of type conversion.
+    Ajuste conforme o seu dataset real.
+    Aqui mostramos a ideia:
+      - tentar converter colunas que parecem numéricas
+      - tentar converter colunas com 'data' no nome para datetime
+    """
+    df = df.copy()
+
+    # converter colunas de data
+    for col in df.columns:
+        if "data" in col or "date" in col:
+            try:
+                df[col] = pd.to_datetime(df[col], errors="coerce")
+            except Exception:
+                pass
+
+    # exemplo de tentativa de numérico para colunas específicas (ajuste à sua realidade)
+    possible_numeric_cols = [
+        col for col in df.columns
+        if any(x in col for x in ["valor", "quantidade", "qtd", "preco", "preço"])
+    ]
+
+    for col in possible_numeric_cols:
+        try:
+            df[col] = (
+                df[col]
+                .astype(str)
+                .str.replace(",", ".", regex=False)
+            )
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+        except Exception:
+            pass
+
+    return df
+
+# -------------------------------------------------------------------
+# Main pipeline
+# -------------------------------------------------------------------
+
+def process_file(path_bronze: Path) -> None:
+    print(f"[bronze_to_silver] Processing: {path_bronze.name}")
+
+    df = read_csv_flexible(path_bronze)
+
+    df = standardize_columns(df)
+    df = basic_cleaning(df)
+    df = convert_types(df)
+
+    dest = SILVER_DIR / path_bronze.name
+    df.to_csv(dest, index=False)
+
+    print(f"[bronze_to_silver] Saved cleaned file to: {dest}")
+
+
+def run_bronze_to_silver() -> None:
+    ensure_dirs()
+
+    csv_files = list(BRONZE_DIR.glob("*.csv"))
+    if not csv_files:
+        print("[bronze_to_silver] No CSV files found in data/bronze/")
+        return
+
+    for file in csv_files:
+        process_file(file)
+
+
+if __name__ == "__main__":
+    run_bronze_to_silver()
+
