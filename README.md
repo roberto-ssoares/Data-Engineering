@@ -36,7 +36,7 @@ Implementação de um Data Lake completo seguindo o padrão **Bronze → Silver 
 
 📁 Caminho:
 
-Data-Lake/P01-DE-Data-Lake-Bronze-Silver-Gold/
+Data-Lake/P01-Bronze-Silver-Gold/
 
 ---
 
