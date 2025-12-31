@@ -35,3 +35,33 @@ Implementação de um Data Lake completo seguindo o padrão **Bronze → Silver 
 - Dados particionados por ano/mês
 
 📁 Caminho:
+
+Data-Lake/P01-DE-Data-Lake-Bronze-Silver-Gold/
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- Python
+- pandas
+- Estrutura extensível para PySpark
+- Conceitos aplicáveis a AWS (S3, Glue, Athena)
+- Git / GitHub
+
+---
+
+## 🎯 Objetivo do Repositório
+
+Este repositório foi criado com foco em **portfólio profissional**, alinhado com desafios reais enfrentados por Engenheiros de Dados em ambientes corporativos.
+
+Ele complementa meus projetos de **Ciência de Dados**, mantendo uma separação clara entre análise/modelagem e engenharia/pipelines.
+
+---
+
+## 📌 Próximos Projetos (Roadmap)
+
+- Orquestração com Apache Airflow
+- Versão distribuída com PySpark
+- Data Quality (Pandera / Great Expectations)
+- Integração com serviços AWS
+
