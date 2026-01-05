@@ -4,8 +4,6 @@ Este repositório concentra meus **projetos práticos de Engenharia de Dados**, 
 
 Os projetos aqui demonstram como estruturar, implementar e evoluir pipelines de dados reais, indo desde ingestão robusta até datasets analíticos prontos para consumo por BI e Analytics.
 
-
-
 ## 🧱 Principais Conceitos Demonstrados
 
 - Arquitetura de Data Lake (Bronze / Silver / Gold)
@@ -17,8 +15,6 @@ Os projetos aqui demonstram como estruturar, implementar e evoluir pipelines de 
 - Logging estruturado
 - Ambientes reprodutíveis (.venv)
 - Código modular e orientado a pipelines
-
-
 
 ## 📂 Projetos
 
@@ -39,8 +35,6 @@ Implementação de um Data Lake completo seguindo o padrão **Bronze → Silver 
 
 Data-Lake/P01-Bronze-Silver-Gold/
 
-
-
 ## 🚀 Tecnologias Utilizadas
 
 - Python
@@ -49,14 +43,11 @@ Data-Lake/P01-Bronze-Silver-Gold/
 - Conceitos aplicáveis a AWS (S3, Glue, Athena)
 - Git / GitHub
 
-
-
 ## 🎯 Objetivo do Repositório
 
 Este repositório foi criado com foco em **portfólio profissional**, alinhado com desafios reais enfrentados por Engenheiros de Dados em ambientes corporativos.
 
 Ele complementa meus projetos de **Ciência de Dados**, mantendo uma separação clara entre análise/modelagem e engenharia/pipelines.
-
 
 ## 📌 Próximos Projetos (Roadmap)
 

@@ -4,8 +4,6 @@
 
 O projeto demonstra como construir **pipelines de dados robustos, reprodutíveis e orientados à produção**, evoluindo desde a ingestão de dados brutos até datasets analíticos prontos para consumo por BI, Analytics e Machine Learning.
 
-
-
 ## **1. Objetivo do Projeto**
 
 O objetivo deste projeto é demonstrar **boas práticas de Engenharia de Dados**, incluindo:
@@ -21,8 +19,6 @@ O objetivo deste projeto é demonstrar **boas práticas de Engenharia de Dados**
 - Arquitetura limpa, código modular e logging estruturado
 
 Este projeto foi concebido como um **case de portfólio em Engenharia de Dados**, alinhado com pipelines reais de mercado.
-
-
 
 ## **2. Visão Geral da Arquitetura**
 
@@ -43,8 +39,6 @@ Este projeto foi concebido como um **case de portfólio em Engenharia de Dados**
 
 - **gold/**  
   Dados prontos para análise, BI e modelagem
-
-
 
 ## **3. Estrutura do Projeto**
 
@@ -72,8 +66,6 @@ de-aws-datalake-bronze-silver-gold/
     └─ 01_eda_and_schema_definition.ipynb
 ```
 
-
-
 ## **4. Ambiente Reprodutível (.venv)**
 
 Cada projeto de Engenharia de Dados deve utilizar um **ambiente virtual isolado**.
@@ -97,7 +89,6 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-
 ## **5. Visão Geral dos Pipelines**
 
 ### **5.1 Raw → Bronze**
@@ -120,8 +111,6 @@ pip install -r requirements.txt
 src/ingestion/ingest_raw_to_bronze.py
 ```
 
-
-
 ### **5.2 Bronze → Silver**
 
 - Padronização de nomes de colunas (`snake_case`)
@@ -140,13 +129,9 @@ src/ingestion/ingest_raw_to_bronze.py
 src/transformation/bronze_to_silver.py
 ```
 
-
-
 ## **6. Pipelines Silver → Gold**
 
 A camada Gold foi implementada propositalmente em **três níveis progressivos**, demonstrando maturidade crescente de Engenharia de Dados.
-
-
 
 ### **6.1 Gold – Basic**
 
@@ -172,8 +157,6 @@ Agregações simples e didáticas, ideais para análises iniciais.
 ```
 src/transformation/silver_to_gold_basic.py
 ```
-
-
 
 ### **6.2 Gold – Analytics**
 
@@ -203,8 +186,6 @@ Gerar **tabelas analíticas prontas para dashboards**.
 ```
 src/transformation/silver_to_gold_analytics.py
 ```
-
-
 
 ### **6.3 Gold – Advanced (Orientado à Produção)**
 
@@ -237,8 +218,6 @@ Demonstrar **práticas de Engenharia de Dados em nível produtivo**.
 src/transformation/silver_to_gold_advanced.py
 ```
 
-
-
 ## **7. Estratégia de Logging**
 
 Todos os pipelines utilizam **logging centralizado**, implementado via helpers compartilhados.
@@ -250,8 +229,6 @@ Todos os pipelines utilizam **logging centralizado**, implementado via helpers c
 - Visibilidade clara de warnings, erros e fluxo de execução
 
 Essa abordagem reflete pipelines batch orquestrados por ferramentas como Airflow.
-
-
 
 ## **8. Boas Práticas de Engenharia Demonstradas**
 
@@ -269,8 +246,6 @@ Essa abordagem reflete pipelines batch orquestrados por ferramentas como Airflow
 
 - Modelagem orientada ao negócio
 
-
-
 ## **9. Próximos Passos**
 
 Possíveis extensões futuras:
@@ -282,5 +257,4 @@ Possíveis extensões futuras:
 - Data Quality (Pandera / Great Expectations)
 
 - Integração com serviços AWS (S3, Glue, Athena)
-
-
+  

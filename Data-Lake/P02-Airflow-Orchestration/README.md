@@ -24,7 +24,6 @@ Demonstrar como **orquestrar pipelines batch** de um Data Lake usando **Apache A
 📌 Importante:  
 O Airflow **não substitui** seus scripts Python — ele **orquestra** o que você já construiu no P01.
 
----
 
 ## 📁 Estrutura recomendada do P02
 
@@ -70,7 +69,7 @@ P02-Airflow-Orchestration/
 
 - Isso reflete ambiente real de produção
 
----
+
 
 ## 🧠 Conceito-chave (entrevista)
 
@@ -79,7 +78,7 @@ P02-Airflow-Orchestration/
 
 Essa frase é **fortíssima**.
 
----
+
 
 ## 🐳 Stack técnica do P02
 
@@ -99,7 +98,7 @@ Para portfólio, a melhor escolha é:
 
 - ruído desnecessário
 
----
+
 
 ## 🔄 DAG principal (o que ele vai fazer)
 
@@ -127,7 +126,6 @@ Cada etapa:
 
 - falha de forma controlada
 
----
 
 ## 📄 README.md do P02 (visão futura)
 
@@ -145,7 +143,7 @@ O README do P02 deve explicar:
 
 Nada de código pesado no README — **arquitetura e intenção**.
 
----
+
 
 ## 🚀 Roadmap de implementação (ordem correta)
 
@@ -183,7 +181,6 @@ Nada de código pesado no README — **arquitetura e intenção**.
 
 
 
----
 
 Perfeito. Vamos criar a **estrutura completa do P02** (pastas + README inicial + placeholders essenciais) de forma que você só precise copiar/criar os arquivos no lugar certo.
 
