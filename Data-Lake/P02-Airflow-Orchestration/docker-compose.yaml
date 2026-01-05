@@ -1,0 +1,3 @@
+# docker-compose placeholder
+# Na próxima etapa, este arquivo terá a stack do Apache Airflow via Docker Compose.
+services: {}
