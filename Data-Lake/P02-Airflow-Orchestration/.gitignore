@@ -1,13 +1,54 @@
-# Airflow
-logs/
-plugins/
-airflow.db
-webserver_config.py
+# =========================
+# Python / Bytecode
+# =========================
 __pycache__/
+*.py[cod]
 
-# Env
+# =========================
+# Airflow logs
+# =========================
+logs/
+**/logs/
+*.log
+
+# =========================
+# Local envs / secrets
+# =========================
+.venv/
+venv/
 .env
+*.env
 
-# OS
+# =========================
+# Docker / Compose overrides
+# =========================
+docker-compose.override.yml
+*.local.yml
+
+# =========================
+# OS / Editor
+# =========================
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Data mounted folders (se existirem no P02)
+# =========================
+data/
+**/data/
+
+# =========================
+# Notebooks checkpoints
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Keep empty folders with .gitkeep
+# =========================
+!.gitkeep
+
+# =========================
+# Fim - 10/01/2026 13:42
+# =========================

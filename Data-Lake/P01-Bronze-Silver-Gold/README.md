@@ -1,8 +1,10 @@
-# **AWS Data Lake – Bronze / Silver / Gold**
+# **AWS Data Lake – Arquitetura Bronze / Silver / Gold em Python (Batch Analytics)**
 
 ### Este repositório apresenta uma **arquitetura de Data Lake ponta a ponta**, implementada em Python, seguindo o modelo moderno de camadas **Bronze → Silver → Gold**.
 
-O projeto demonstra como construir **pipelines de dados robustos, reprodutíveis e orientados à produção**, evoluindo desde a ingestão de dados brutos até datasets analíticos prontos para consumo por BI, Analytics e Machine Learning.
+Este projeto foi concebido como um **case de portfólio em Engenharia de Dados**, 
+alinhado com pipelines reais de mercado, incluindo uma camada de **orquestração 
+batch via Apache Airflow (P02)**.
 
 ## **1. Objetivo do Projeto**
 
@@ -22,9 +24,9 @@ Este projeto foi concebido como um **case de portfólio em Engenharia de Dados**
 
 ## **2. Visão Geral da Arquitetura**
 
-**Cloud (conceitual):** AWS  
-**Storage (lógico):** Amazon S3  
-**Execução (local):** Python (pandas), com extensão natural para PySpark
+**Arquitetura Conceitual:** AWS  
+**Camada de Storage (lógica):** Amazon S3  
+**Execução local (desenvolvimento):** Python (pandas), com extensão natural para PySpark
 
 ### **Camadas de Dados**
 
@@ -56,15 +58,26 @@ de-aws-datalake-bronze-silver-gold/
 │   └─ gold/                 # dados analíticos / de negócio
 │
 ├─ logs/                     # logs de execução dos pipelines
+|
+├─ docs/                     
 │
 ├─ src/
 │   ├─ ingestion/            # raw -> bronze
 │   ├─ transformation/       # bronze -> silver -> gold
 │   └─ utils/                # helpers compartilhados (IO, logging)
 │
+├─ orchestration/
+│   └─ airflow/              # DAGs e scripts de orquestração (P02)
+|
 └─ notebooks/
     └─ 01_eda_and_schema_definition.ipynb
 ```
+
+- Idempotência e validação de saída mínima
+
+- Separação clara entre lógica de negócio (P01) e orquestração (P02)
+
+- Pipelines tolerantes a falhas parciais
 
 ## **4. Ambiente Reprodutível (.venv)**
 
@@ -257,4 +270,3 @@ Possíveis extensões futuras:
 - Data Quality (Pandera / Great Expectations)
 
 - Integração com serviços AWS (S3, Glue, Athena)
-  

@@ -1,4 +1,3 @@
-
 """
 Pipeline: Silver -> Gold (versão C - avançada)
 
@@ -7,7 +6,7 @@ Responsável por:
 - Validar schema mínimo para o pipeline
 - Enriquecer o dataset (ano, mês, dia, hora, período do dia)
 - Gerar:
-    - Tabela de fatos: fact_acidentes
+    - Tabela de fatos: fact_acidentes (particionada por ano/mes)
     - Dimensão de localidade: dim_localidade
 - Salvar a fact particionada em ano=YYYY/mes=MM (estilo Data Lake)
 """
@@ -15,18 +14,19 @@ Responsável por:
 from __future__ import annotations
 
 import logging
+import sys
 from pathlib import Path
-from typing import List, Set, Dict, Any
+from typing import Any, List, Optional, Set
 
 import pandas as pd
-import sys
 
 # -------------------------------------------------------------------
-# Helpers de import (mesmo padrão dos outros scripts)
+# Project paths (robusto para execução via Airflow/Docker)
 # -------------------------------------------------------------------
-# ensure `src/` is on sys.path so we can import utils when the script
-# is executed directly from the repository root
-SRC_DIR = Path(__file__).resolve().parents[1]
+SRC_DIR = Path(__file__).resolve().parents[1]   # .../p01/src
+PROJECT_DIR = SRC_DIR.parent                    # .../p01
+
+# garante que `src/` esteja no sys.path para imports internos
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
@@ -34,33 +34,34 @@ from utils.io_helpers import read_csv_flexible
 from utils.logging_helpers import setup_logging
 
 # -------------------------------------------------------------------
-# Diretórios e configs
+# Diretórios de trabalho (absolutos a partir do projeto)
 # -------------------------------------------------------------------
+DATA_DIR = PROJECT_DIR / "data"
+LOGS_DIR = PROJECT_DIR / "logs"
 
-SILVER_DIR = Path("data/silver")
-GOLD_DIR = Path("data/gold")
+SILVER_DIR = DATA_DIR / "silver"
 
-SILVER_FILE_NAME = "dados-prf-2023.csv"  # ajuste se mudar o nome
+# IMPORTANTE: advanced em uma camada separada (para não misturar com gold simples/analytics)
+GOLD_ADV_DIR = DATA_DIR / "gold_advanced"
 
-# -------------------------------------------------------------------
-# Helpers gerais
-# -------------------------------------------------------------------
+# Nome do arquivo principal na Silver (ajuste se necessário)
+SILVER_FILE_NAME = "dados-prf-2023.csv"
+# Carrega o dataset principal da camada Silver.
+silver_path = SILVER_DIR / SILVER_FILE_NAME
 
 def ensure_dirs() -> None:
-    """Garante que a pasta Gold exista."""
-    GOLD_DIR.mkdir(parents=True, exist_ok=True)
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
+    GOLD_ADV_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def load_silver_main() -> pd.DataFrame:
-    """Carrega o dataset principal da camada Silver."""
-    silver_path = SILVER_DIR / SILVER_FILE_NAME
 
     if not silver_path.exists():
         raise FileNotFoundError(f"Arquivo Silver não encontrado: {silver_path}")
 
-    logging.info("Lendo arquivo Silver: %s", silver_path.name)
+    logging.info("Lendo arquivo Silver: %s", silver_path)
     df = read_csv_flexible(silver_path)
-    logging.info("Arquivo Silver carregado com shape: %s", df.shape)
+    logging.info("Arquivo Silver carregado com shape=%s", df.shape)
     return df
 
 
@@ -86,11 +87,6 @@ NUMERIC_CANDIDATES: List[str] = [
 
 
 def validate_schema(df: pd.DataFrame) -> None:
-    """
-    Valida se o dataset Silver possui o conjunto mínimo de colunas necessárias.
-
-    Se houver colunas ausentes, gera log de erro e lança exceção.
-    """
     cols = set(df.columns)
     missing = REQUIRED_COLUMNS - cols
 
@@ -99,14 +95,14 @@ def validate_schema(df: pd.DataFrame) -> None:
         logging.error(msg)
         raise ValueError(msg)
 
-    logging.info("Schema Silver validado com sucesso. Colunas obrigatórias presentes.")
+    logging.info("Schema Silver validado com sucesso.")
 
 
 # -------------------------------------------------------------------
 # Enriquecimento do dataset
 # -------------------------------------------------------------------
 
-def _extract_hour(value: Any) -> int | None:
+def _extract_hour(value: Any) -> Optional[int]:
     try:
         parts = str(value).split(":")
         return int(parts[0])
@@ -114,13 +110,13 @@ def _extract_hour(value: Any) -> int | None:
         return None
 
 
-def _periodo(hora: int | None) -> str:
+def _periodo(hora: Optional[int]) -> str:
     if hora is None:
         return "desconhecido"
     if 0 <= hora < 6:
         return "madrugada"
     if 6 <= hora < 12:
-        return "manhã"
+        return "manha"
     if 12 <= hora < 18:
         return "tarde"
     if 18 <= hora <= 23:
@@ -131,27 +127,25 @@ def _periodo(hora: int | None) -> str:
 def enrich_dataset(df: pd.DataFrame) -> pd.DataFrame:
     """
     Enriquecimento:
-    - Converte data_inversa para datetime
-    - Cria ano, mes, dia
-    - Extrai hora e período do dia a partir de 'horario'
+    - data_inversa -> datetime (tentativa)
+    - cria ano, mes, dia
+    - horario -> hora e periodo_dia
     """
     df = df.copy()
 
     # data_inversa -> datetime
     try:
-        df["data_inversa"] = pd.to_datetime(df["data_inversa"])
+        df["data_inversa"] = pd.to_datetime(df["data_inversa"], errors="coerce")
     except Exception as e:
         logging.warning("Falha ao converter 'data_inversa' para datetime: %s", str(e))
 
-    if pd.api.types.is_datetime64_any_dtype(df.get("data_inversa")):
+    # ano/mes/dia (somente onde data_inversa for válida)
+    if "data_inversa" in df.columns and pd.api.types.is_datetime64_any_dtype(df["data_inversa"]):
         df["ano"] = df["data_inversa"].dt.year
         df["mes"] = df["data_inversa"].dt.month
         df["dia"] = df["data_inversa"].dt.day
     else:
-        logging.warning(
-            "Coluna 'data_inversa' não está em formato datetime. "
-            "Colunas 'ano', 'mes', 'dia' não serão criadas."
-        )
+        logging.warning("Coluna 'data_inversa' não está datetime. 'ano/mes/dia' não serão criadas.")
 
     # horario -> hora, periodo_dia
     df["hora"] = df["horario"].apply(_extract_hour)
@@ -162,32 +156,17 @@ def enrich_dataset(df: pd.DataFrame) -> pd.DataFrame:
 
 
 # -------------------------------------------------------------------
-# Criação de Dimensões e Fatos
+# Dimensão e Fato
 # -------------------------------------------------------------------
 
 def build_dim_localidade(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Cria dimensão de localidade com UF e município.
-
-    Remove duplicados e ordena para uso em BI.
-    """
     dim = df[["uf", "municipio"]].drop_duplicates().reset_index(drop=True)
     dim = dim.sort_values(by=["uf", "municipio"])
-    logging.info("Dimensão localidade criada com shape: %s", dim.shape)
+    logging.info("Dimensão dim_localidade criada com shape=%s", dim.shape)
     return dim
 
 
 def build_fact_acidentes(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Cria tabela de fatos de acidentes com colunas relevantes para análise.
-
-    Inclui:
-    - data_inversa, ano, mes, dia
-    - uf, municipio
-    - tipo_acidente, causa_acidente
-    - horario, hora, periodo_dia
-    - colunas numéricas como mortos, feridos, ilesos (se existirem)
-    """
     base_cols = [
         "data_inversa",
         "ano",
@@ -202,69 +181,58 @@ def build_fact_acidentes(df: pd.DataFrame) -> pd.DataFrame:
         "periodo_dia",
     ]
 
-    final_cols: List[str] = []
-
-    for col in base_cols:
-        if col in df.columns:
-            final_cols.append(col)
-
-    for col in NUMERIC_CANDIDATES:
-        if col in df.columns:
-            final_cols.append(col)
+    final_cols: List[str] = [c for c in base_cols if c in df.columns]
+    for c in NUMERIC_CANDIDATES:
+        if c in df.columns:
+            final_cols.append(c)
 
     fact = df[final_cols].copy()
-    logging.info("Tabela fato fact_acidentes criada com shape: %s", fact.shape)
+    logging.info("Fato fact_acidentes criado com shape=%s", fact.shape)
     return fact
 
 
 # -------------------------------------------------------------------
-# Salvando em formato particionado (ano/mes)
+# Salvando
 # -------------------------------------------------------------------
 
 def save_dim_localidade(dim: pd.DataFrame) -> Path:
-    dest = GOLD_DIR / "dim_localidade.csv"
+    dest = GOLD_ADV_DIR / "dim_localidade.csv"
     dim.to_csv(dest, index=False)
-    logging.info("Dimensão localidade salva em: %s", dest)
+    logging.info("Dimensão dim_localidade salva em: %s", dest)
     return dest
 
 
 def save_fact_partitioned_by_year_month(fact: pd.DataFrame) -> None:
     """
-    Salva a tabela de fatos particionada em diretórios de ano e mês.
-
     Exemplo:
-        data/gold/ano=2023/mes=1/fact_acidentes.csv
+      data/gold_advanced/ano=2023/mes=01/fact_acidentes.csv
     """
     if "ano" not in fact.columns or "mes" not in fact.columns:
-        logging.warning(
-            "Colunas 'ano' e 'mes' não encontradas em fact_acidentes. "
-            "Salvando tabela completa sem particionamento."
-        )
-        dest = GOLD_DIR / "fact_acidentes.csv"
+        logging.warning("Sem 'ano/mes'. Salvando fact completa sem particionamento.")
+        dest = GOLD_ADV_DIR / "fact_acidentes.csv"
         fact.to_csv(dest, index=False)
         logging.info("Fato salvo sem particionamento em: %s", dest)
         return
 
-    # garante tipo inteiro
     fact = fact.copy()
+
+    # Garantir inteiros “seguros” (permitindo NaN)
     fact["ano"] = fact["ano"].astype("Int64")
     fact["mes"] = fact["mes"].astype("Int64")
 
     grupos = fact.groupby(["ano", "mes"], dropna=False)
 
     for (ano, mes), df_part in grupos:
-        # tratar caso de ano/mes nulos
         if pd.isna(ano) or pd.isna(mes):
-            subdir = GOLD_DIR / "ano=desconhecido" / "mes=desconhecido"
+            subdir = GOLD_ADV_DIR / "ano=desconhecido" / "mes=desconhecido"
         else:
-            subdir = GOLD_DIR / f"ano={int(ano)}" / f"mes={int(mes):02d}"
+            subdir = GOLD_ADV_DIR / f"ano={int(ano)}" / f"mes={int(mes):02d}"
 
         subdir.mkdir(parents=True, exist_ok=True)
         dest = subdir / "fact_acidentes.csv"
         df_part.to_csv(dest, index=False)
-        logging.info(
-            "Fato particionado salvo em: %s (shape=%s)", dest, df_part.shape
-        )
+
+        logging.info("Fato particionado salvo em: %s (shape=%s)", dest, df_part.shape)
 
 
 # -------------------------------------------------------------------
@@ -272,46 +240,28 @@ def save_fact_partitioned_by_year_month(fact: pd.DataFrame) -> None:
 # -------------------------------------------------------------------
 
 def run_silver_to_gold_advanced() -> None:
-    """Executa o pipeline Silver -> Gold (versão avançada)."""
     ensure_dirs()
 
-    try:
-        df_silver = load_silver_main()
-    except Exception as e:
-        logging.error("Erro ao carregar Silver: %s", str(e))
-        return
+    logging.info("Contexto: cwd=%s", Path.cwd())
+    logging.info("SILVER_DIR=%s | GOLD_ADV_DIR=%s", SILVER_DIR, GOLD_ADV_DIR)
 
-    # 1) valida schema
-    try:
-        validate_schema(df_silver)
-    except Exception as e:
-        logging.error("Erro de schema na Silver: %s", str(e))
-        return
+    df_silver = load_silver_main()
+    validate_schema(df_silver)
 
-    # 2) enriquecer dataset
     df_enriched = enrich_dataset(df_silver)
 
-    # 3) criar dimensão localidade
-    try:
-        dim_localidade = build_dim_localidade(df_enriched)
-        save_dim_localidade(dim_localidade)
-    except Exception as e:
-        logging.error("Erro ao criar/salvar dim_localidade: %s", str(e))
+    # Dimensão
+    dim_localidade = build_dim_localidade(df_enriched)
+    save_dim_localidade(dim_localidade)
 
-    # 4) criar fato acidentes
-    try:
-        fact_acidentes = build_fact_acidentes(df_enriched)
-        save_fact_partitioned_by_year_month(fact_acidentes)
-    except Exception as e:
-        logging.error("Erro ao criar/salvar fact_acidentes: %s", str(e))
+    # Fato particionada
+    fact_acidentes = build_fact_acidentes(df_enriched)
+    save_fact_partitioned_by_year_month(fact_acidentes)
 
-
-# -------------------------------------------------------------------
-# Entry point
-# -------------------------------------------------------------------
 
 if __name__ == "__main__":
-    setup_logging("logs/silver_to_gold_advanced.log")
+    ensure_dirs()
+    setup_logging(str(LOGS_DIR / "silver_to_gold_advanced.log"))
     logging.info("Iniciando pipeline Silver -> Gold (avançado).")
     run_silver_to_gold_advanced()
     logging.info("Pipeline Silver -> Gold (avançado) finalizado.")

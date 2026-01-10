@@ -13,18 +13,19 @@ Responsável por:
 from __future__ import annotations
 
 import logging
+import sys
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 import pandas as pd
-import sys
 
 # -------------------------------------------------------------------
-# Helpers de import (igual aos outros pipelines)
+# Project paths (robusto para execução via Airflow/Docker)
 # -------------------------------------------------------------------
-# ensure `src/` is on sys.path so we can import utils when the script
-# is executed directly from the repository root
-SRC_DIR = Path(__file__).resolve().parents[1]
+SRC_DIR = Path(__file__).resolve().parents[1]   # .../p01/src
+PROJECT_DIR = SRC_DIR.parent                    # .../p01
+
+# garante que `src/` esteja no sys.path para imports internos
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
@@ -32,33 +33,33 @@ from utils.io_helpers import read_csv_flexible
 from utils.logging_helpers import setup_logging
 
 # -------------------------------------------------------------------
-# Diretórios e configs
+# Diretórios de trabalho (absolutos a partir do projeto)
 # -------------------------------------------------------------------
+DATA_DIR = PROJECT_DIR / "data"
+LOGS_DIR = PROJECT_DIR / "logs"
 
-SILVER_DIR = Path("data/silver")
-GOLD_DIR = Path("data/gold")
+SILVER_DIR = DATA_DIR / "silver"
+GOLD_DIR = DATA_DIR / "gold_analytics"
 
-SILVER_FILE_NAME = "dados-prf-2023.csv"  # ajuste se mudar o nome do arquivo
+# Nome do arquivo principal na Silver (ajuste se necessário)
+SILVER_FILE_NAME = "dados-prf-2023.csv"
+# Carrega o dataset principal da camada Silver.
+silver_path = SILVER_DIR / SILVER_FILE_NAME
 
-# -------------------------------------------------------------------
-# Helpers
-# -------------------------------------------------------------------
 
 def ensure_dirs() -> None:
-    """Garante que a pasta Gold exista."""
+    LOGS_DIR.mkdir(parents=True, exist_ok=True)
     GOLD_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def load_silver_main() -> pd.DataFrame:
-    """Carrega o dataset principal da camada Silver."""
-    silver_path = SILVER_DIR / SILVER_FILE_NAME
 
     if not silver_path.exists():
         raise FileNotFoundError(f"Arquivo Silver não encontrado: {silver_path}")
 
-    logging.info("Lendo arquivo Silver: %s", silver_path.name)
+    logging.info("Lendo arquivo Silver: %s", silver_path)
     df = read_csv_flexible(silver_path)
-    logging.info("Arquivo Silver carregado com shape: %s", df.shape)
+    logging.info("Arquivo Silver carregado com shape=%s", df.shape)
     return df
 
 
@@ -72,13 +73,13 @@ def add_ones_column(df: pd.DataFrame) -> pd.DataFrame:
 def aggregate_with_count(
     df: pd.DataFrame,
     group_cols: List[str],
-    numeric_cols: List[str] | None = None,
+    numeric_cols: Optional[List[str]] = None,
     count_col_name: str = "total_acidentes",
 ) -> pd.DataFrame:
     """
     Função genérica para agregar:
     - agrupa por group_cols
-    - soma colunas numéricas fornecidas
+    - soma colunas numéricas fornecidas (se existirem)
     - conta total de registros usando __ones__
     """
     df = add_ones_column(df)
@@ -91,9 +92,7 @@ def aggregate_with_count(
                 agg_dict[col] = "sum"
 
     grouped = df.groupby(group_cols, dropna=False).agg(agg_dict).reset_index()
-
     grouped = grouped.rename(columns={"__ones__": count_col_name})
-
     return grouped
 
 
@@ -102,12 +101,7 @@ def build_accidents_by_uf(df: pd.DataFrame) -> pd.DataFrame:
     if "uf" not in df.columns:
         raise KeyError("Coluna 'uf' não encontrada na Silver.")
 
-    numeric_candidate_cols: List[str] = [
-        "mortos",
-        "feridos_graves",
-        "feridos_leves",
-        "ilesos",
-    ]
+    numeric_candidate_cols: List[str] = ["mortos", "feridos_graves", "feridos_leves", "ilesos"]
 
     grouped = aggregate_with_count(
         df,
@@ -117,12 +111,9 @@ def build_accidents_by_uf(df: pd.DataFrame) -> pd.DataFrame:
     )
 
     if "mortos" in grouped.columns:
-        grouped["taxa_mortalidade_por_acidente"] = (
-            grouped["mortos"] / grouped["total_acidentes"]
-        )
+        grouped["taxa_mortalidade_por_acidente"] = grouped["mortos"] / grouped["total_acidentes"]
 
-    grouped = grouped.sort_values(by="total_acidentes", ascending=False)
-    return grouped
+    return grouped.sort_values(by="total_acidentes", ascending=False)
 
 
 def build_accidents_by_tipo(df: pd.DataFrame) -> pd.DataFrame:
@@ -137,8 +128,7 @@ def build_accidents_by_tipo(df: pd.DataFrame) -> pd.DataFrame:
         count_col_name="total_acidentes",
     )
 
-    grouped = grouped.sort_values(by="total_acidentes", ascending=False)
-    return grouped
+    return grouped.sort_values(by="total_acidentes", ascending=False)
 
 
 def build_accidents_by_causa(df: pd.DataFrame) -> pd.DataFrame:
@@ -153,8 +143,7 @@ def build_accidents_by_causa(df: pd.DataFrame) -> pd.DataFrame:
         count_col_name="total_acidentes",
     )
 
-    grouped = grouped.sort_values(by="total_acidentes", ascending=False)
-    return grouped
+    return grouped.sort_values(by="total_acidentes", ascending=False)
 
 
 def build_accidents_by_periodo_dia(df: pd.DataFrame) -> pd.DataFrame:
@@ -162,38 +151,34 @@ def build_accidents_by_periodo_dia(df: pd.DataFrame) -> pd.DataFrame:
     Agregação: acidentes por faixa de horário (período do dia).
 
     Requer uma coluna 'horario' em formato HH:MM ou similar.
-    Cria faixas aproximadas: madrugada, manhã, tarde, noite.
+    Cria faixas: madrugada, manhã, tarde, noite, desconhecido.
     """
     if "horario" not in df.columns:
         raise KeyError("Coluna 'horario' não encontrada na Silver.")
 
     df = df.copy()
 
-    # tentar extrair hora como inteiro
-    def _extract_hour(value) -> int | None:
+    def _extract_hour(value) -> Optional[int]:
         try:
-            # suporta "HH:MM" ou "HH:MM:SS"
             parts = str(value).split(":")
             return int(parts[0])
         except Exception:
             return None
 
-    df["hora"] = df["horario"].apply(_extract_hour)
-
-    # define faixa de horário
-    def _periodo(hora: int | None) -> str:
+    def _periodo(hora: Optional[int]) -> str:
         if hora is None:
             return "desconhecido"
         if 0 <= hora < 6:
             return "madrugada"
         if 6 <= hora < 12:
-            return "manhã"
+            return "manha"
         if 12 <= hora < 18:
             return "tarde"
         if 18 <= hora <= 23:
             return "noite"
         return "desconhecido"
 
+    df["hora"] = df["horario"].apply(_extract_hour)
     df["periodo_dia"] = df["hora"].apply(_periodo)
 
     grouped = aggregate_with_count(
@@ -203,8 +188,7 @@ def build_accidents_by_periodo_dia(df: pd.DataFrame) -> pd.DataFrame:
         count_col_name="total_acidentes",
     )
 
-    grouped = grouped.sort_values(by="total_acidentes", ascending=False)
-    return grouped
+    return grouped.sort_values(by="total_acidentes", ascending=False)
 
 
 def save_gold_table(df_gold: pd.DataFrame, name: str) -> Path:
@@ -215,56 +199,38 @@ def save_gold_table(df_gold: pd.DataFrame, name: str) -> Path:
     return dest
 
 
-# -------------------------------------------------------------------
-# Pipeline principal
-# -------------------------------------------------------------------
-
 def run_silver_to_gold_analytics() -> None:
     """Executa o pipeline Silver -> Gold (versão analítica)."""
     ensure_dirs()
 
-    try:
-        df_silver = load_silver_main()
-    except Exception as e:
-        logging.error("Erro ao carregar Silver: %s", str(e))
-        return
+    logging.info("Contexto: cwd=%s", Path.cwd())
+    logging.info("SILVER_DIR=%s | GOLD_DIR=%s", SILVER_DIR, GOLD_DIR)
+
+    df_silver = load_silver_main()
 
     # 1) acidentes por UF
-    try:
-        df_uf = build_accidents_by_uf(df_silver)
-        save_gold_table(df_uf, "gold_acidentes_por_uf.csv")
-    except Exception as e:
-        logging.error("Erro ao gerar acidentes por UF: %s", str(e))
+    df_uf = build_accidents_by_uf(df_silver)
+    save_gold_table(df_uf, "gold_acidentes_por_uf.csv")
 
     # 2) acidentes por tipo
-    try:
-        df_tipo = build_accidents_by_tipo(df_silver)
-        save_gold_table(df_tipo, "gold_acidentes_por_tipo.csv")
-    except Exception as e:
-        logging.error("Erro ao gerar acidentes por tipo: %s", str(e))
+    df_tipo = build_accidents_by_tipo(df_silver)
+    save_gold_table(df_tipo, "gold_acidentes_por_tipo.csv")
 
     # 3) acidentes por causa
-    try:
-        df_causa = build_accidents_by_causa(df_silver)
-        save_gold_table(df_causa, "gold_acidentes_por_causa.csv")
-    except Exception as e:
-        logging.error("Erro ao gerar acidentes por causa: %s", str(e))
+    df_causa = build_accidents_by_causa(df_silver)
+    save_gold_table(df_causa, "gold_acidentes_por_causa.csv")
 
-    # 4) acidentes por período do dia (se possível)
-    try:
+    # 4) acidentes por período do dia (opcional: se a coluna existir)
+    if "horario" in df_silver.columns:
         df_periodo = build_accidents_by_periodo_dia(df_silver)
         save_gold_table(df_periodo, "gold_acidentes_por_periodo_dia.csv")
-    except Exception as e:
-        logging.error("Erro ao gerar acidentes por período do dia: %s", str(e))
+    else:
+        logging.warning("Coluna 'horario' não existe na Silver. Pulando 'periodo_dia'.")
 
-
-# -------------------------------------------------------------------
-# Entry point
-# -------------------------------------------------------------------
 
 if __name__ == "__main__":
-    setup_logging("logs/silver_to_gold_analytics.log")
+    ensure_dirs()
+    setup_logging(str(LOGS_DIR / "silver_to_gold_analytics.log"))
     logging.info("Iniciando pipeline Silver -> Gold (analítico).")
     run_silver_to_gold_analytics()
     logging.info("Pipeline Silver -> Gold (analítico) finalizado.")
-
