@@ -22,13 +22,13 @@ Fornecer um pipeline de dados estruturado para ingestão, tratamento e organiza�
 
 ```mermaid
 flowchart LR
-    A[Fontes de Dados<br/>(CSV / Sistemas Operacionais)] --> B[Camada Bronze<br/>Dados Brutos]
+    A[Fontes de Dados\nCSV e Sistemas Operacionais] --> B[Camada Bronze\nDados Brutos]
 
-    B --> C[Camada Silver<br/>Dados Limpos e Padronizados]
+    B --> C[Camada Silver\nDados Limpos e Padronizados]
 
-    C --> D[Camada Gold<br/>Dados Analíticos<br/>Agregados / KPIs]
+    C --> D[Camada Gold\nDados Analiticos\nAgregados e KPIs]
 
-    D --> E[Consumo Analítico<br/>(BI / Analytics / ML)]
+    D --> E[Consumo Analitico\nBI Analytics e ML]
 
     subgraph Armazenamento
         B
@@ -37,8 +37,8 @@ flowchart LR
     end
 
     subgraph Processamento
-        F[Python / SQL]
-        G[DuckDB / Spark]
+        F[Python e SQL]
+        G[DuckDB ou Spark]
     end
 
     F --> B
@@ -181,56 +181,3 @@ Você pode integrar esse pipeline a:
 
 Se você encontrar melhorias ou tiver sugestões, sinta-se à vontade para abrir um *issue* ou *pull request*!
 
----
-
-Perfeito 👍
-Vou te entregar **dois artefatos prontos**, pensados para **recrutador técnico + gestor de Data Engineering**:
-
-1️⃣ **Diagrama de Arquitetura (Mermaid)** → ideal para README do GitHub
-2️⃣ **Versão explicada (como ler o diagrama)** → para entrevista / narrativa
-
-Você pode usar **exatamente como está**.
-
----
-
-
-📌 **Vantagem**
-
-* GitHub renderiza automaticamente
-* Recrutador entende o fluxo em **10 segundos**
-* Demonstra **pensamento arquitetural**, não só código
-
----
-
-
-👉 Esse discurso é **exatamente o que um Data Engineer precisa saber explicar**.
-
----
-
-# 3️⃣ Onde isso te coloca (estratégia)
-
-Com esse README + diagrama, você demonstra:
-
-✅ Arquitetura de dados
-✅ Separação de responsabilidades
-✅ Pensamento corporativo
-✅ Clareza de fluxo
-✅ Maturidade de Data Engineering
-
-👉 Isso **eleva muito** o nível do seu GitHub.
-
----
-
-# 4️⃣ Próximo passo lógico (sequência ideal)
-
-Sugiro seguirmos assim:
-
-1. ✅ README + diagrama do **P01 – Bronze/Silver/Gold** (feito)
-2. ➡️ README do **Pipeline com DuckDB**
-3. ➡️ README do **Projeto IoT / Manutenção Preditiva**
-4. ➡️ Fixar esses 3 no perfil
-
-👉 Me diga:
-**Vamos para o README do próximo projeto ou quer refinar mais este (ex: incremental, ingest_date, logs)?**
-
-Você está montando um **portfólio de Data Engineer de verdade**, não de curso.
