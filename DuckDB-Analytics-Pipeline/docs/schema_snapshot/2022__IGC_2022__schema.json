@@ -1,0 +1,250 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2022\\IGC_2022.xlsx",
+  "filename": "IGC_2022.xlsx",
+  "sheets": [
+    {
+      "sheet_name": "IGC",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano",
+        "Código da IES",
+        "Nome da IES",
+        "Sigla da IES",
+        "Organização Acadêmica",
+        "Categoria Administrativa",
+        "Sigla da UF",
+        "Nº de Cursos com CPC no triênio",
+        "Alfa (Proporção de Graduação)",
+        "Conceito Médio de Graduação",
+        "Beta (Proporção de Mestrado - Equivalente)",
+        "Conceito Médio de Mestrado",
+        "Gama (Proporção de Doutorandos – Equivalente)",
+        "Conceito Médio do doutorado",
+        "IGC (Contínuo)",
+        "IGC (Faixa)",
+        "(Observação)"
+      ],
+      "preview_rows": [
+        {
+          "Ano": 2022,
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          "Organização Acadêmica": "Universidade",
+          "Categoria Administrativa": "Pública Federal",
+          "Sigla da UF": "MT",
+          " Nº de Cursos com CPC no triênio": 77,
+          " Alfa (Proporção de Graduação)": 0.736044695,
+          " Conceito Médio de Graduação": 3.106215119,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.167179584,
+          " Conceito Médio de Mestrado": 4.448683503,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.096775721,
+          " Conceito Médio do doutorado": 4.817010309,
+          " IGC (Contínuo)": 3.496211863,
+          " IGC (Faixa)": 4,
+          " (Observação)": 2
+        },
+        {
+          "Ano": 2022,
+          " Código da IES": 2,
+          " Nome da IES": "UNIVERSIDADE DE BRASÍLIA",
+          " Sigla da IES": "UNB",
+          "Organização Acadêmica": "Universidade",
+          "Categoria Administrativa": "Pública Federal",
+          "Sigla da UF": "DF",
+          " Nº de Cursos com CPC no triênio": 77,
+          " Alfa (Proporção de Graduação)": 0.4837,
+          " Conceito Médio de Graduação": 3.4849,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.2524,
+          " Conceito Médio de Mestrado": 4.7324,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.264,
+          " Conceito Médio do doutorado": 4.9206,
+          " IGC (Contínuo)": 4.1787,
+          " IGC (Faixa)": 5,
+          " (Observação)": 1
+        },
+        {
+          "Ano": 2022,
+          " Código da IES": 3,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE SERGIPE",
+          " Sigla da IES": "UFS",
+          "Organização Acadêmica": "Universidade",
+          "Categoria Administrativa": "Pública Federal",
+          "Sigla da UF": "SE",
+          " Nº de Cursos com CPC no triênio": 85,
+          " Alfa (Proporção de Graduação)": 0.740714525,
+          " Conceito Médio de Graduação": 3.348702601,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.150169504,
+          " Conceito Médio de Mestrado": 4.488959764,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.109115971,
+          " Conceito Médio do doutorado": 4.781860465,
+          " IGC (Contínuo)": 3.676314865,
+          " IGC (Faixa)": 4,
+          " (Observação)": 2
+        },
+        {
+          "Ano": 2022,
+          " Código da IES": 4,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DO AMAZONAS",
+          " Sigla da IES": "UFAM",
+          "Organização Acadêmica": "Universidade",
+          "Categoria Administrativa": "Pública Federal",
+          "Sigla da UF": "AM",
+          " Nº de Cursos com CPC no triênio": 70,
+          " Alfa (Proporção de Graduação)": 0.80638238,
+          " Conceito Médio de Graduação": 2.941900205,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.126908733,
+          " Conceito Médio de Mestrado": 4.351913085,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.066708887,
+          " Conceito Médio do doutorado": 4.501666667,
+          " IGC (Contínuo)": 3.224893438,
+          " IGC (Faixa)": 4,
+          " (Observação)": 2
+        },
+        {
+          "Ano": 2022,
+          " Código da IES": 5,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DO PIAUÍ",
+          " Sigla da IES": "UFPI",
+          "Organização Acadêmica": "Universidade",
+          "Categoria Administrativa": "Pública Federal",
+          "Sigla da UF": "PI",
+          " Nº de Cursos com CPC no triênio": 72,
+          " Alfa (Proporção de Graduação)": 0.7592,
+          " Conceito Médio de Graduação": 2.9535,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.1368,
+          " Conceito Médio de Mestrado": 4.4215,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.104,
+          " Conceito Médio do doutorado": 4.7381,
+          " IGC (Contínuo)": 3.34,
+          " IGC (Faixa)": 4,
+          " (Observação)": 1
+        }
+      ]
+    },
+    {
+      "sheet_name": "matrículas_2019_2021_2022",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano da Edição",
+        "Códigos da IES",
+        "Código do Curso",
+        "Nº de Matrículas"
+      ],
+      "preview_rows": [
+        {
+          "Ano da Edição": 2019,
+          "Códigos da IES": 1,
+          "Código do Curso": 12,
+          "Nº de Matrículas": 490
+        },
+        {
+          "Ano da Edição": 2019,
+          "Códigos da IES": 1,
+          "Código do Curso": 1270062,
+          "Nº de Matrículas": 200
+        },
+        {
+          "Ano da Edição": 2019,
+          "Códigos da IES": 1,
+          "Código do Curso": 116736,
+          "Nº de Matrículas": 239
+        },
+        {
+          "Ano da Edição": 2021,
+          "Códigos da IES": 1,
+          "Código do Curso": 6,
+          "Nº de Matrículas": 308
+        },
+        {
+          "Ano da Edição": 2022,
+          "Códigos da IES": 1,
+          "Código do Curso": 116708,
+          "Nº de Matrículas": 79
+        }
+      ]
+    },
+    {
+      "sheet_name": "Programas_Capes",
+      "n_preview_rows": 5,
+      "columns": [
+        "CO_IES",
+        "CO_PROGRAMA",
+        "MATRICULADOS_MESTRADO",
+        "NOTA_MESTRADO",
+        "MATRICULADOS_DOUTORADO",
+        "NOTA_DOUTORADO"
+      ],
+      "preview_rows": [
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019171P0",
+          "MATRICULADOS_MESTRADO": 59,
+          "NOTA_MESTRADO": 3,
+          "MATRICULADOS_DOUTORADO": 0,
+          "NOTA_DOUTORADO": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019039P5",
+          "MATRICULADOS_MESTRADO": 27,
+          "NOTA_MESTRADO": 4,
+          "MATRICULADOS_DOUTORADO": 0,
+          "NOTA_DOUTORADO": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019031P4",
+          "MATRICULADOS_MESTRADO": 34,
+          "NOTA_MESTRADO": 4,
+          "MATRICULADOS_DOUTORADO": 0,
+          "NOTA_DOUTORADO": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019020P2",
+          "MATRICULADOS_MESTRADO": 46,
+          "NOTA_MESTRADO": 5,
+          "MATRICULADOS_DOUTORADO": 88,
+          "NOTA_DOUTORADO": 5.0
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019035P0",
+          "MATRICULADOS_MESTRADO": 37,
+          "NOTA_MESTRADO": 3,
+          "MATRICULADOS_DOUTORADO": 0,
+          "NOTA_DOUTORADO": NaN
+        }
+      ]
+    },
+    {
+      "sheet_name": "Atualizações",
+      "n_preview_rows": 4,
+      "columns": [
+        "CONTROLE DE ATUALIZAÇÕES",
+        "Unnamed: 1"
+      ],
+      "preview_rows": [
+        {
+          "CONTROLE DE ATUALIZAÇÕES": null,
+          "Unnamed: 1": NaN
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "Data da atualização",
+          "Unnamed: 1": "Informações sobre a atualização"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2024-04-02 00:00:00",
+          "Unnamed: 1": "Versão original"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2024-04-11 00:00:00",
+          "Unnamed: 1": "Indicação da metódologia utilizada para o cálculo do IGC no campo Observação, sendo 1 =  componente de graduação  mantendo a mesma metodologia para os três anos de referência e 2 =  componente de graduação calculado a partir do aperfeiçoamento da metodologia do valor agregado (IDD contínuo),  nos termos da NOTA TÉCNICA Nº 5/2024/CEI/CGGI/DAES.\n\nAtualização dos dados do IGC 2022 para as IES com o campo Observação = 2.\n\nAtualização da Organização Acadêmica e Categoria Administrativa."
+        }
+      ]
+    }
+  ],
+  "inspected_at": "2026-01-30T13:00:06",
+  "ano_enade": 2022
+}

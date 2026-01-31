@@ -1,0 +1,172 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2019\\IDD_2019.xlsx",
+  "filename": "IDD_2019.xlsx",
+  "sheets": [
+    {
+      "sheet_name": "IDD2019",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano",
+        "Código da Área",
+        "Área de Avaliação",
+        "Código da IES",
+        "Nome da IES",
+        "Sigla da IES",
+        "Organização Acadêmica",
+        "Categoria Administrativa",
+        "Código do Curso",
+        "Modalidade de Ensino",
+        "Código do Município",
+        "Município do Curso",
+        "Sigla da UF",
+        "Nº de Concluintes Inscritos",
+        "Nº de Concluintes Participantes",
+        "Nº de Concluintes Participantes com nota no Enem",
+        "Proporção de Concluintes participantes com nota no Enem",
+        "Nota Bruta - IDD",
+        "IDD (Contínuo)",
+        "IDD (Faixa)"
+      ],
+      "preview_rows": [
+        {
+          " Ano": 2019,
+          " Código da Área": 28,
+          " Área de Avaliação": "NUTRIÇÃO",
+          " Código da IES": 1414,
+          " Nome da IES": "CENTRO UNIVERSITÁRIO SÃO LUCAS",
+          " Sigla da IES": "UniSL",
+          " Organização Acadêmica": "Centro Universitário",
+          " Categoria Administrativa": "Privada com fins lucrativos",
+          " Código do Curso": 45877,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 1100205,
+          " Município do Curso": "Porto Velho",
+          " Sigla da UF": "RO",
+          " Nº de Concluintes Inscritos": 30,
+          " Nº de Concluintes Participantes": 20,
+          " Nº de Concluintes Participantes com nota no Enem": 17,
+          " Proporção de Concluintes participantes com nota no Enem": 0.85,
+          " Nota Bruta - IDD": 1.1832,
+          " IDD (Contínuo)": 3.2835,
+          " IDD (Faixa)": 4
+        },
+        {
+          " Ano": 2019,
+          " Código da Área": 6208,
+          " Área de Avaliação": "ENGENHARIA DE PRODUÇÃO",
+          " Código da IES": 12758,
+          " Nome da IES": "FACULDADE DE EDUCAÇÃO E CULTURA DE PORTO VELHO",
+          " Sigla da IES": "FAEC-PVH",
+          " Organização Acadêmica": "Faculdade",
+          " Categoria Administrativa": "Privada com fins lucrativos",
+          " Código do Curso": 1193546,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 1100205,
+          " Município do Curso": "Porto Velho",
+          " Sigla da UF": "RO",
+          " Nº de Concluintes Inscritos": 14,
+          " Nº de Concluintes Participantes": 14,
+          " Nº de Concluintes Participantes com nota no Enem": 7,
+          " Proporção de Concluintes participantes com nota no Enem": 0.5,
+          " Nota Bruta - IDD": 0.0782,
+          " IDD (Contínuo)": 2.5135,
+          " IDD (Faixa)": 3
+        },
+        {
+          " Ano": 2019,
+          " Código da Área": 5710,
+          " Área de Avaliação": "ENGENHARIA CIVIL",
+          " Código da IES": 12758,
+          " Nome da IES": "FACULDADE DE EDUCAÇÃO E CULTURA DE PORTO VELHO",
+          " Sigla da IES": "FAEC-PVH",
+          " Organização Acadêmica": "Faculdade",
+          " Categoria Administrativa": "Privada com fins lucrativos",
+          " Código do Curso": 1108254,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 1100205,
+          " Município do Curso": "Porto Velho",
+          " Sigla da UF": "RO",
+          " Nº de Concluintes Inscritos": 47,
+          " Nº de Concluintes Participantes": 42,
+          " Nº de Concluintes Participantes com nota no Enem": 35,
+          " Proporção de Concluintes participantes com nota no Enem": 0.833333333,
+          " Nota Bruta - IDD": 0.5448,
+          " IDD (Contínuo)": 2.9682,
+          " IDD (Faixa)": 4
+        },
+        {
+          " Ano": 2019,
+          " Código da Área": 5,
+          " Área de Avaliação": "MEDICINA VETERINÁRIA",
+          " Código da IES": 1087,
+          " Nome da IES": "FACULDADES INTEGRADAS APARÍCIO CARVALHO",
+          " Sigla da IES": "FIMCA",
+          " Organização Acadêmica": "Centro Universitário",
+          " Categoria Administrativa": "Privada sem fins lucrativos",
+          " Código do Curso": 73753,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 1100205,
+          " Município do Curso": "Porto Velho",
+          " Sigla da UF": "RO",
+          " Nº de Concluintes Inscritos": 53,
+          " Nº de Concluintes Participantes": 51,
+          " Nº de Concluintes Participantes com nota no Enem": 34,
+          " Proporção de Concluintes participantes com nota no Enem": 0.666666667,
+          " Nota Bruta - IDD": 0.458,
+          " IDD (Contínuo)": 3.015,
+          " IDD (Faixa)": 4
+        },
+        {
+          " Ano": 2019,
+          " Código da Área": 19,
+          " Área de Avaliação": "FARMÁCIA",
+          " Código da IES": 1087,
+          " Nome da IES": "FACULDADES INTEGRADAS APARÍCIO CARVALHO",
+          " Sigla da IES": "FIMCA",
+          " Organização Acadêmica": "Centro Universitário",
+          " Categoria Administrativa": "Privada sem fins lucrativos",
+          " Código do Curso": 73755,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 1100205,
+          " Município do Curso": "Porto Velho",
+          " Sigla da UF": "RO",
+          " Nº de Concluintes Inscritos": 59,
+          " Nº de Concluintes Participantes": 56,
+          " Nº de Concluintes Participantes com nota no Enem": 46,
+          " Proporção de Concluintes participantes com nota no Enem": 0.821428571,
+          " Nota Bruta - IDD": -0.2168,
+          " IDD (Contínuo)": 2.3584,
+          " IDD (Faixa)": 3
+        }
+      ]
+    },
+    {
+      "sheet_name": "Atualizações",
+      "n_preview_rows": 4,
+      "columns": [
+        "CONTROLE DE ATUALIZAÇÕES",
+        "Unnamed: 1"
+      ],
+      "preview_rows": [
+        {
+          "CONTROLE DE ATUALIZAÇÕES": null,
+          "Unnamed: 1": NaN
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "Data da atualização",
+          "Unnamed: 1": "Informações sobre a atualização"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2020-10-20 00:00:00",
+          "Unnamed: 1": "versão original"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2021-05-11 00:00:00",
+          "Unnamed: 1": "Correções de informações relativas à categoria administrativa e organização acadêmica das IES.\n\nInserção dos resultados do curso cód. e-MEC 83604, conforme conclusão da apuração da Seres/MEC, presente no processo administrativo 23036.004940/2020-18."
+        }
+      ]
+    }
+  ],
+  "inspected_at": "2026-01-30T13:00:02",
+  "ano_enade": 2019
+}

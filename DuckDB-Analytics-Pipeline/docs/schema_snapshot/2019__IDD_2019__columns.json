@@ -1,0 +1,32 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2019\\IDD_2019.xlsx",
+  "ano_enade": 2019,
+  "columns_by_sheet": {
+    "IDD2019": [
+      "Ano",
+      "Código da Área",
+      "Área de Avaliação",
+      "Código da IES",
+      "Nome da IES",
+      "Sigla da IES",
+      "Organização Acadêmica",
+      "Categoria Administrativa",
+      "Código do Curso",
+      "Modalidade de Ensino",
+      "Código do Município",
+      "Município do Curso",
+      "Sigla da UF",
+      "Nº de Concluintes Inscritos",
+      "Nº de Concluintes Participantes",
+      "Nº de Concluintes Participantes com nota no Enem",
+      "Proporção de Concluintes participantes com nota no Enem",
+      "Nota Bruta - IDD",
+      "IDD (Contínuo)",
+      "IDD (Faixa)"
+    ],
+    "Atualizações": [
+      "CONTROLE DE ATUALIZAÇÕES",
+      "Unnamed: 1"
+    ]
+  }
+}

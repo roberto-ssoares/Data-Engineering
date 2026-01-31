@@ -1,0 +1,50 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2022\\CPC_2022.xlsx",
+  "ano_enade": 2022,
+  "columns_by_sheet": {
+    "CPC 2022": [
+      "Ano",
+      "Código da IES",
+      "Nome da IES",
+      "Sigla da IES",
+      "Organização Acadêmica",
+      "Categoria Administrativa",
+      "Código do Curso",
+      "Código da Área",
+      "Área de Avaliação",
+      "Modalidade de Ensino",
+      "Código do Município",
+      "Município do Curso",
+      "Sigla da UF",
+      "Nº de Concluintes Inscritos",
+      "Nº de Concluintes Participantes",
+      "Nota Bruta - FG",
+      "Nota Padronizada - FG",
+      "Nota Bruta - CE",
+      "Nota Padronizada - CE",
+      "Conceito Enade (Contínuo)",
+      "Concluintes participantes com nota no Enem",
+      "Proporção de concluintes participantes com nota no Enem",
+      "Nota Bruta - IDD",
+      "Nota Padronizada - IDD",
+      "Nota Bruta – Organização Didático-Pedagógica",
+      "Nota Padronizada - Organização Didático-Pedagógica",
+      "Nota Bruta – Infraestrutura e Instalações Físicas",
+      "Nota Padronizada - Infraestrutura e Instalações Físicas",
+      "Nota Bruta – Oportunidade de Ampliação da Formação",
+      "Nota Padronizada - Oportunidade de Ampliação da Formação",
+      "Nota Bruta - Mestres",
+      "Nota Padronizada - Mestres",
+      "Nota Bruta - Doutores",
+      "Nota Padronizada - Doutores",
+      "Nota Bruta – Regime de Trabalho",
+      "Nota Padronizada - Regime de Trabalho",
+      "CPC (Contínuo)",
+      "CPC (Faixa)"
+    ],
+    "Atualizações": [
+      "CONTROLE DE ATUALIZAÇÕES",
+      "Unnamed: 1"
+    ]
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2021\\IGC_2021.xlsx",
+  "filename": "IGC_2021.xlsx",
+  "sheets": [
+    {
+      "sheet_name": "IGC_2021",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano",
+        "Código da IES*",
+        "Nome da IES*",
+        "Sigla da IES*",
+        "Organização Acadêmica*",
+        "Categoria Administrativa",
+        "Sigla da UF",
+        "Nº de Cursos com CPC no triênio",
+        "Alfa (Proporção de Graduação)",
+        "Conceito Médio de Graduação",
+        "Beta (Proporção de Mestrado - Equivalente)",
+        "Conceito Médio de Mestrado",
+        "Gama (Proporção de Doutorandos – Equivalente)",
+        "Conceito Médio do doutorado",
+        "IGC (Contínuo)",
+        "IGC (Faixa)",
+        "TX_OBS"
+      ],
+      "preview_rows": [
+        {
+          " Ano": 2021,
+          " Código da IES*": 1,
+          "Nome da IES*": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES*": "UFMT",
+          " Organização Acadêmica*": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "MT",
+          " Nº de Cursos com CPC no triênio": 80,
+          " Alfa (Proporção de Graduação)": 0.78,
+          " Conceito Médio de Graduação": 3.019,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.134,
+          " Conceito Médio de Mestrado": 4.272,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.084,
+          " Conceito Médio do doutorado": 4.668,
+          " IGC (Contínuo)": 3.328,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2021,
+          " Código da IES*": 2,
+          "Nome da IES*": "UNIVERSIDADE DE BRASÍLIA",
+          " Sigla da IES*": "UNB",
+          " Organização Acadêmica*": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "DF",
+          " Nº de Cursos com CPC no triênio": 78,
+          " Alfa (Proporção de Graduação)": 0.523,
+          " Conceito Médio de Graduação": 3.357,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.23,
+          " Conceito Médio de Mestrado": 4.582,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.246,
+          " Conceito Médio do doutorado": 4.77,
+          " IGC (Contínuo)": 3.988,
+          " IGC (Faixa)": 5,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2021,
+          " Código da IES*": 3,
+          "Nome da IES*": "UNIVERSIDADE FEDERAL DE SERGIPE",
+          " Sigla da IES*": "UFS",
+          " Organização Acadêmica*": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "SE",
+          " Nº de Cursos com CPC no triênio": 84,
+          " Alfa (Proporção de Graduação)": 0.78,
+          " Conceito Médio de Graduação": 3.213,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.126,
+          " Conceito Médio de Mestrado": 4.262,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.093,
+          " Conceito Médio do doutorado": 4.648,
+          " IGC (Contínuo)": 3.48,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2021,
+          " Código da IES*": 4,
+          "Nome da IES*": "UNIVERSIDADE FEDERAL DO AMAZONAS",
+          " Sigla da IES*": "UFAM",
+          " Organização Acadêmica*": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "AM",
+          " Nº de Cursos com CPC no triênio": 70,
+          " Alfa (Proporção de Graduação)": 0.838,
+          " Conceito Médio de Graduação": 2.878,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.107,
+          " Conceito Médio de Mestrado": 4.246,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.054,
+          " Conceito Médio do doutorado": 4.474,
+          " IGC (Contínuo)": 3.111,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2021,
+          " Código da IES*": 5,
+          "Nome da IES*": "UNIVERSIDADE FEDERAL DO PIAUÍ",
+          " Sigla da IES*": "UFPI",
+          " Organização Acadêmica*": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "PI",
+          " Nº de Cursos com CPC no triênio": 76,
+          " Alfa (Proporção de Graduação)": 0.806,
+          " Conceito Médio de Graduação": 2.866,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.12,
+          " Conceito Médio de Mestrado": 4.317,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.072,
+          " Conceito Médio do doutorado": 4.64,
+          " IGC (Contínuo)": 3.17,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        }
+      ]
+    },
+    {
+      "sheet_name": "CPC_2018_2019_2021",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano da Edição",
+        "Código da IES",
+        "Código do Curso",
+        "CPC (Contínuo)",
+        "Nº de Matrículas"
+      ],
+      "preview_rows": [
+        {
+          "Ano da Edição": 2018,
+          "Código da IES": 1,
+          "Código do Curso": 1,
+          "CPC (Contínuo)": 3.027,
+          "Nº de Matrículas": 445
+        },
+        {
+          "Ano da Edição": 2018,
+          "Código da IES": 1,
+          "Código do Curso": 2,
+          "CPC (Contínuo)": 2.814,
+          "Nº de Matrículas": 344
+        },
+        {
+          "Ano da Edição": 2019,
+          "Código da IES": 1,
+          "Código do Curso": 3,
+          "CPC (Contínuo)": 2.497,
+          "Nº de Matrículas": 248
+        },
+        {
+          "Ano da Edição": 2021,
+          "Código da IES": 1,
+          "Código do Curso": 6,
+          "CPC (Contínuo)": 3.955,
+          "Nº de Matrículas": 308
+        },
+        {
+          "Ano da Edição": 2018,
+          "Código da IES": 1,
+          "Código do Curso": 7,
+          "CPC (Contínuo)": 3.131,
+          "Nº de Matrículas": 253
+        }
+      ]
+    },
+    {
+      "sheet_name": "Programas_Capes",
+      "n_preview_rows": 5,
+      "columns": [
+        "CO_IES",
+        "CO_PROGRAMA",
+        "Nota Mestrado",
+        "Matriculados Mestrado",
+        "Nota Doutorado",
+        "Matriculados Doutorado"
+      ],
+      "preview_rows": [
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019015P9",
+          "Nota Mestrado": 4.0,
+          "Matriculados Mestrado": 43.0,
+          "Nota Doutorado": 4.0,
+          "Matriculados Doutorado": 30.0
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019003P0",
+          "Nota Mestrado": 5.0,
+          "Matriculados Mestrado": 27.0,
+          "Nota Doutorado": 5.0,
+          "Matriculados Doutorado": 46.0
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019012P0",
+          "Nota Mestrado": 4.0,
+          "Matriculados Mestrado": 31.0,
+          "Nota Doutorado": 4.0,
+          "Matriculados Doutorado": 38.0
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019174P0",
+          "Nota Mestrado": NaN,
+          "Matriculados Mestrado": NaN,
+          "Nota Doutorado": NaN,
+          "Matriculados Doutorado": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "50001019011P3",
+          "Nota Mestrado": 3.0,
+          "Matriculados Mestrado": 30.0,
+          "Nota Doutorado": NaN,
+          "Matriculados Doutorado": NaN
+        }
+      ]
+    },
+    {
+      "sheet_name": "Atualizações",
+      "n_preview_rows": 3,
+      "columns": [
+        "CONTROLE DE ATUALIZAÇÕES",
+        "Unnamed: 1"
+      ],
+      "preview_rows": [
+        {
+          "CONTROLE DE ATUALIZAÇÕES": null,
+          "Unnamed: 1": NaN
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "Data da atualização",
+          "Unnamed: 1": "Informações sobre a atualização"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2023-01-17 00:00:00",
+          "Unnamed: 1": "Versão original"
+        }
+      ]
+    }
+  ],
+  "inspected_at": "2026-01-30T13:00:04",
+  "ano_enade": 2021
+}

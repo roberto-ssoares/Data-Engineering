@@ -1,0 +1,43 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2022\\IGC_2022.xlsx",
+  "ano_enade": 2022,
+  "columns_by_sheet": {
+    "IGC": [
+      "Ano",
+      "Código da IES",
+      "Nome da IES",
+      "Sigla da IES",
+      "Organização Acadêmica",
+      "Categoria Administrativa",
+      "Sigla da UF",
+      "Nº de Cursos com CPC no triênio",
+      "Alfa (Proporção de Graduação)",
+      "Conceito Médio de Graduação",
+      "Beta (Proporção de Mestrado - Equivalente)",
+      "Conceito Médio de Mestrado",
+      "Gama (Proporção de Doutorandos – Equivalente)",
+      "Conceito Médio do doutorado",
+      "IGC (Contínuo)",
+      "IGC (Faixa)",
+      "(Observação)"
+    ],
+    "matrículas_2019_2021_2022": [
+      "Ano da Edição",
+      "Códigos da IES",
+      "Código do Curso",
+      "Nº de Matrículas"
+    ],
+    "Programas_Capes": [
+      "CO_IES",
+      "CO_PROGRAMA",
+      "MATRICULADOS_MESTRADO",
+      "NOTA_MESTRADO",
+      "MATRICULADOS_DOUTORADO",
+      "NOTA_DOUTORADO"
+    ],
+    "Atualizações": [
+      "CONTROLE DE ATUALIZAÇÕES",
+      "Unnamed: 1"
+    ]
+  }
+}

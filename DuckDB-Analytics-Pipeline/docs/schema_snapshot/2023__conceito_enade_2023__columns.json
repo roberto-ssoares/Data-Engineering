@@ -1,0 +1,30 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2023\\conceito_enade_2023.xlsx",
+  "ano_enade": 2023,
+  "columns_by_sheet": {
+    "PLANILHA_ENADE": [
+      "Ano",
+      "Código da Área",
+      "Área de Avaliação",
+      "Grau Acadêmico",
+      "Código da IES",
+      "Nome da IES*",
+      "Sigla da IES*",
+      "Organização Acadêmica",
+      "Categoria Administrativa",
+      "Código do Curso",
+      "Modalidade de Ensino",
+      "Código do Município**",
+      "Município do Curso**",
+      "Sigla da UF**",
+      "Nº de Concluintes Inscritos",
+      "Nº  de Concluintes Participantes",
+      "Nota Bruta - FG",
+      "Nota Padronizada - FG",
+      "Nota Bruta - CE",
+      "Nota Padronizada - CE",
+      "Conceito Enade (Contínuo)",
+      "Conceito Enade (Faixa)"
+    ]
+  }
+}

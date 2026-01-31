@@ -1,0 +1,172 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2022\\IDD_2022.xlsx",
+  "filename": "IDD_2022.xlsx",
+  "sheets": [
+    {
+      "sheet_name": "IDD 2022",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano",
+        "Código da Área",
+        "Área de Avaliação",
+        "Código da IES",
+        "Nome da IES",
+        "Sigla da IES",
+        "Organização Acadêmica",
+        "Categoria Administrativa",
+        "Código do Curso",
+        "Modalidade de Ensino",
+        "Código do Município",
+        "Município do Curso",
+        "Sigla da UF",
+        "Nº de Concluintes Inscritos",
+        "Nº de Concluintes Participantes",
+        "Nº de Concluintes Participantes com nota no Enem",
+        "Proporção de Concluintes participantes com nota no Enem",
+        "Nota Bruta - IDD",
+        "IDD (Contínuo)",
+        "IDD (Faixa)"
+      ],
+      "preview_rows": [
+        {
+          " Ano": 2022,
+          " Código da Área": 1,
+          " Área de Avaliação": "ADMINISTRAÇÃO",
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Código do Curso": 13,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 5103403,
+          " Município do Curso": "Cuiabá",
+          " Sigla da UF": "MT",
+          " Nº de Concluintes Inscritos": 124,
+          " Nº de Concluintes Participantes": 52,
+          " Nº de Concluintes Participantes com nota no Enem": 48,
+          " Proporção de Concluintes participantes com nota no Enem": 0.923076923,
+          " Nota Bruta - IDD": 1.472995742,
+          " IDD (Contínuo)": 2.772492304,
+          " IDD (Faixa)": 3
+        },
+        {
+          " Ano": 2022,
+          " Código da Área": 100,
+          " Área de Avaliação": "ADMINISTRAÇÃO PÚBLICA",
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Código do Curso": 1113617,
+          " Modalidade de Ensino": "Educação a Distância",
+          " Código do Município": 5103403,
+          " Município do Curso": "Cuiabá",
+          " Sigla da UF": "MT",
+          " Nº de Concluintes Inscritos": 14,
+          " Nº de Concluintes Participantes": 12,
+          " Nº de Concluintes Participantes com nota no Enem": 4,
+          " Proporção de Concluintes participantes com nota no Enem": 0.333333333,
+          " Nota Bruta - IDD": 0.358997347,
+          " IDD (Contínuo)": 2.90696137,
+          " IDD (Faixa)": 3
+        },
+        {
+          " Ano": 2022,
+          " Código da Área": 22,
+          " Área de Avaliação": "CIÊNCIAS CONTÁBEIS",
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Código do Curso": 8,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 5103403,
+          " Município do Curso": "Cuiabá",
+          " Sigla da UF": "MT",
+          " Nº de Concluintes Inscritos": 84,
+          " Nº de Concluintes Participantes": 73,
+          " Nº de Concluintes Participantes com nota no Enem": 73,
+          " Proporção de Concluintes participantes com nota no Enem": 1.0,
+          " Nota Bruta - IDD": 0.102991449,
+          " IDD (Contínuo)": 2.550972792,
+          " IDD (Faixa)": 3
+        },
+        {
+          " Ano": 2022,
+          " Código da Área": 13,
+          " Área de Avaliação": "CIÊNCIAS ECONÔMICAS",
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Código do Curso": 2,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 5103403,
+          " Município do Curso": "Cuiabá",
+          " Sigla da UF": "MT",
+          " Nº de Concluintes Inscritos": 36,
+          " Nº de Concluintes Participantes": 29,
+          " Nº de Concluintes Participantes com nota no Enem": 29,
+          " Proporção de Concluintes participantes com nota no Enem": 1.0,
+          " Nota Bruta - IDD": -2.794492864,
+          " IDD (Contínuo)": 1.249232733,
+          " IDD (Faixa)": 2
+        },
+        {
+          " Ano": 2022,
+          " Código da Área": 2,
+          " Área de Avaliação": "DIREITO",
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Código do Curso": 1,
+          " Modalidade de Ensino": "Educação Presencial",
+          " Código do Município": 5103403,
+          " Município do Curso": "Cuiabá",
+          " Sigla da UF": "MT",
+          " Nº de Concluintes Inscritos": 91,
+          " Nº de Concluintes Participantes": 46,
+          " Nº de Concluintes Participantes com nota no Enem": 45,
+          " Proporção de Concluintes participantes com nota no Enem": 0.97826087,
+          " Nota Bruta - IDD": 3.083265416,
+          " IDD (Contínuo)": 3.316529171,
+          " IDD (Faixa)": 4
+        }
+      ]
+    },
+    {
+      "sheet_name": "Atualizações",
+      "n_preview_rows": 4,
+      "columns": [
+        "CONTROLE DE ATUALIZAÇÕES",
+        "Unnamed: 1"
+      ],
+      "preview_rows": [
+        {
+          "CONTROLE DE ATUALIZAÇÕES": null,
+          "Unnamed: 1": NaN
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "Data da atualização",
+          "Unnamed: 1": "Informações sobre a atualização"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2024-04-02 00:00:00",
+          "Unnamed: 1": "Versão original"
+        },
+        {
+          "CONTROLE DE ATUALIZAÇÕES": "2024-04-11 00:00:00",
+          "Unnamed: 1": "Substituição dos valores da variável Nota Bruta – IDD por incorreção na montagem da planilha de divulgação do indicador. Estão mantidos os resultados das variáveis IDD (Contínuo) e IDD (Faixa). \n\nAtualização da Organização Acadêmica e Categoria Administrativa."
+        }
+      ]
+    }
+  ],
+  "inspected_at": "2026-01-30T13:00:05",
+  "ano_enade": 2022
+}

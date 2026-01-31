@@ -1,0 +1,40 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2018\\IGC_2018.xlsx",
+  "ano_enade": 2018,
+  "columns_by_sheet": {
+    "IGC": [
+      "Ano",
+      "Código da IES",
+      "Nome da IES",
+      "Sigla da IES",
+      "Categoria Administrativa",
+      "Organização Acadêmica",
+      "Sigla da UF",
+      "Nº de Cursos com CPC no triênio",
+      "Alfa (Proporção de Graduação)",
+      "Conceito Médio de Graduação",
+      "Beta (Proporção de Mestrado - Equivalente)",
+      "Conceito Médio de Mestrado",
+      "Gama (Proporção de Doutorandos – Equivalente)",
+      "Conceito Médio do doutorado",
+      "IGC (Contínuo)",
+      "IGC (Faixa)",
+      "TX_OBS (Observação)"
+    ],
+    "CPC_2016_2017_2018": [
+      "Ano da Edição",
+      "Código da IES",
+      "Código do Curso",
+      "CPC (Contínuo)",
+      "Nº de Matrículas"
+    ],
+    "Programas_Capes_2018": [
+      "CO_IES",
+      "CO_PROGRAMA",
+      "Nota Mestrado",
+      "Matriculados Mestrado",
+      "Nota Doutorado",
+      "Matriculados Doutorado"
+    ]
+  }
+}

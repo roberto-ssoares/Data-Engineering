@@ -1,0 +1,44 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2021\\IGC_2021.xlsx",
+  "ano_enade": 2021,
+  "columns_by_sheet": {
+    "IGC_2021": [
+      "Ano",
+      "Código da IES*",
+      "Nome da IES*",
+      "Sigla da IES*",
+      "Organização Acadêmica*",
+      "Categoria Administrativa",
+      "Sigla da UF",
+      "Nº de Cursos com CPC no triênio",
+      "Alfa (Proporção de Graduação)",
+      "Conceito Médio de Graduação",
+      "Beta (Proporção de Mestrado - Equivalente)",
+      "Conceito Médio de Mestrado",
+      "Gama (Proporção de Doutorandos – Equivalente)",
+      "Conceito Médio do doutorado",
+      "IGC (Contínuo)",
+      "IGC (Faixa)",
+      "TX_OBS"
+    ],
+    "CPC_2018_2019_2021": [
+      "Ano da Edição",
+      "Código da IES",
+      "Código do Curso",
+      "CPC (Contínuo)",
+      "Nº de Matrículas"
+    ],
+    "Programas_Capes": [
+      "CO_IES",
+      "CO_PROGRAMA",
+      "Nota Mestrado",
+      "Matriculados Mestrado",
+      "Nota Doutorado",
+      "Matriculados Doutorado"
+    ],
+    "Atualizações": [
+      "CONTROLE DE ATUALIZAÇÕES",
+      "Unnamed: 1"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2023\\IDD_2023.xlsx",
+  "ano_enade": 2023,
+  "columns_by_sheet": {
+    "IDD_2023": [
+      "Ano",
+      "Código da Área",
+      "Área de Avaliação",
+      "Código da IES",
+      "Nome da IES",
+      "Sigla da IES",
+      "Organização Acadêmica",
+      "Categoria Administrativa",
+      "Código do Curso",
+      "Modalidade de Ensino",
+      "Código do Município",
+      "Município do Curso",
+      "Sigla da UF",
+      "Nº de Concluintes Inscritos",
+      "Nº de Concluintes Participantes",
+      "Nº de Concluintes Participantes com nota no Enem",
+      "Proporção de Concluintes participantes com nota no Enem",
+      "Nota Bruta - IDD",
+      "IDD (Contínuo)",
+      "IDD (Faixa)"
+    ]
+  }
+}

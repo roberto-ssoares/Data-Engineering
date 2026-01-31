@@ -1,0 +1,230 @@
+{
+  "file": "D:\\_DE-Projects\\Data-Engineering\\DuckDB-Analytics-Pipeline\\data\\raw\\enade\\2019\\IGC_2019.xlsx",
+  "filename": "IGC_2019.xlsx",
+  "sheets": [
+    {
+      "sheet_name": "IGC_2019",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano",
+        "Código da IES",
+        "Nome da IES",
+        "Sigla da IES",
+        "Organização Acadêmica",
+        "Categoria Administrativa",
+        "Sigla da UF",
+        "Nº de Cursos com CPC no triênio",
+        "Alfa (Proporção de Graduação)",
+        "Conceito Médio de Graduação",
+        "Beta (Proporção de Mestrado - Equivalente)",
+        "Conceito Médio de Mestrado",
+        "Gama (Proporção de Doutorandos – Equivalente)",
+        "Conceito Médio do doutorado",
+        "IGC (Contínuo)",
+        "IGC (Faixa)",
+        "TX_OBS"
+      ],
+      "preview_rows": [
+        {
+          " Ano": 2019,
+          " Código da IES": 1,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE MATO GROSSO",
+          " Sigla da IES": "UFMT",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "MT",
+          " Nº de Cursos com CPC no triênio": 91,
+          " Alfa (Proporção de Graduação)": 0.7933547696,
+          " Conceito Médio de Graduação": 2.9249620907,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.1338049303,
+          " Conceito Médio de Mestrado": 4.2998462327,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.0728403001,
+          " Conceito Médio do doutorado": 4.6765927978,
+          " IGC (Contínuo)": 3.2365176739,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2019,
+          " Código da IES": 2,
+          " Nome da IES": "UNIVERSIDADE DE BRASÍLIA",
+          " Sigla da IES": "UNB",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "DF",
+          " Nº de Cursos com CPC no triênio": 87,
+          " Alfa (Proporção de Graduação)": 0.5243639587,
+          " Conceito Médio de Graduação": 3.2695857893,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.232540338,
+          " Conceito Médio de Mestrado": 4.5884405054,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.2430957033,
+          " Conceito Médio do doutorado": 4.7726399231,
+          " IGC (Contínuo)": 3.9416587126,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2019,
+          " Código da IES": 3,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DE SERGIPE",
+          " Sigla da IES": "UFS",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "SE",
+          " Nº de Cursos com CPC no triênio": 90,
+          " Alfa (Proporção de Graduação)": 0.801417177,
+          " Conceito Médio de Graduação": 3.105499697,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.1218487395,
+          " Conceito Médio de Mestrado": 4.2752605347,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.0767340835,
+          " Conceito Médio do doutorado": 4.6636069114,
+          " IGC (Contínuo)": 3.3675935096,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2019,
+          " Código da IES": 4,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DO AMAZONAS",
+          " Sigla da IES": "UFAM",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "AM",
+          " Nº de Cursos com CPC no triênio": 75,
+          " Alfa (Proporção de Graduação)": 0.8485818847,
+          " Conceito Médio de Graduação": 2.8218514478,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.1029658432,
+          " Conceito Médio de Mestrado": 4.2343665035,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.048452272,
+          " Conceito Médio do doutorado": 4.4914196568,
+          " IGC (Contínuo)": 3.0481866247,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        },
+        {
+          " Ano": 2019,
+          " Código da IES": 5,
+          " Nome da IES": "UNIVERSIDADE FEDERAL DO PIAUÍ",
+          " Sigla da IES": "UFPI",
+          " Organização Acadêmica": "Universidade",
+          " Categoria Administrativa": "Pública Federal",
+          " Sigla da UF": "PI",
+          " Nº de Cursos com CPC no triênio": 77,
+          " Alfa (Proporção de Graduação)": 0.8550832944,
+          " Conceito Médio de Graduação": 2.7132830196,
+          " Beta (Proporção de Mestrado - Equivalente)": 0.1002335357,
+          " Conceito Médio de Mestrado": 4.3096076459,
+          " Gama (Proporção de Doutorandos – Equivalente)": 0.0446831699,
+          " Conceito Médio do doutorado": 4.6685667752,
+          " IGC (Contínuo)": 2.9606565572,
+          " IGC (Faixa)": 4,
+          "TX_OBS": NaN
+        }
+      ]
+    },
+    {
+      "sheet_name": "CPC_2017_2018_2019",
+      "n_preview_rows": 5,
+      "columns": [
+        "Ano da Edição",
+        "Código da IES",
+        "Código do Curso",
+        "CPC (Contínuo)",
+        "Nº de Matrículas"
+      ],
+      "preview_rows": [
+        {
+          "Ano da Edição": 2018,
+          "Código da IES": 1,
+          "Código do Curso": 1,
+          "CPC (Contínuo)": 3.027883464,
+          "Nº de Matrículas": 445
+        },
+        {
+          "Ano da Edição": 2018,
+          "Código da IES": 1,
+          "Código do Curso": 2,
+          "CPC (Contínuo)": 2.814476755,
+          "Nº de Matrículas": 344
+        },
+        {
+          "Ano da Edição": 2019,
+          "Código da IES": 1,
+          "Código do Curso": 3,
+          "CPC (Contínuo)": 2.497350057517,
+          "Nº de Matrículas": 248
+        },
+        {
+          "Ano da Edição": 2017,
+          "Código da IES": 1,
+          "Código do Curso": 6,
+          "CPC (Contínuo)": 2.966373346,
+          "Nº de Matrículas": 321
+        },
+        {
+          "Ano da Edição": 2018,
+          "Código da IES": 1,
+          "Código do Curso": 7,
+          "CPC (Contínuo)": 3.131664777,
+          "Nº de Matrículas": 253
+        }
+      ]
+    },
+    {
+      "sheet_name": "Programas_Capes",
+      "n_preview_rows": 5,
+      "columns": [
+        "CO_IES",
+        "CO_PROGRAMA",
+        "Nota Mestrado",
+        "Matriculados Mestrado",
+        "Nota Doutorado",
+        "Matriculados Doutorado"
+      ],
+      "preview_rows": [
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "12001015038P1",
+          "Nota Mestrado": NaN,
+          "Matriculados Mestrado": NaN,
+          "Nota Doutorado": 4.0,
+          "Matriculados Doutorado": 4.0
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "31001017155P1",
+          "Nota Mestrado": 4.0,
+          "Matriculados Mestrado": 44.0,
+          "Nota Doutorado": NaN,
+          "Matriculados Doutorado": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "31075010001P2",
+          "Nota Mestrado": 5.0,
+          "Matriculados Mestrado": 75.0,
+          "Nota Doutorado": NaN,
+          "Matriculados Doutorado": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "31102000001P6",
+          "Nota Mestrado": 4.0,
+          "Matriculados Mestrado": 20.0,
+          "Nota Doutorado": NaN,
+          "Matriculados Doutorado": NaN
+        },
+        {
+          "CO_IES": 1,
+          "CO_PROGRAMA": "32001010175P5",
+          "Nota Mestrado": 4.0,
+          "Matriculados Mestrado": 24.0,
+          "Nota Doutorado": NaN,
+          "Matriculados Doutorado": NaN
+        }
+      ]
+    }
+  ],
+  "inspected_at": "2026-01-30T13:00:03",
+  "ano_enade": 2019
+}
